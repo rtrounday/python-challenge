@@ -74,10 +74,9 @@ with open(filepath, 'r', newline="") as csvfile:
     print ('Total Votes: ' + str(totalvotes))
     print ('*'*80)
     print ("")
-
-    for i in range(len(candidates)):
         # print (i)
-         print ((candidates[i]) + " " + str(votepercent[i]) +"%" + " "  + str(voteresults[i] ))
+    for i in range(len(candidates)):
+        print ((candidates[i]) + " " + str(votepercent[i]) +"%" + " "  + str(voteresults[i] ))
         # print (percent)
     print ("")
     print ('*'*80)
@@ -97,6 +96,23 @@ with open(filepath, 'r', newline="") as csvfile:
 
         # Write the zipped lists to a csv
         csvWriter.writerows(cleanCSV)
+
+    # print results to text file
+
+    with open('pollresults.txt', 'w') as f:
+        print ("Election Results", file=f)
+        print ("", file=f)
+        print ('*'*80, file=f)
+        print ('Total Votes: ' + str(totalvotes), file=f)
+        print ('*'*80, file = f)
+        print ("", file = f)
+        for i in range(len(candidates)):
+            print ((candidates[i]) + " " + str(votepercent[i]) +"%" + " "  + str(voteresults[i] ), file=f)
+        print ("", file=f)
+        print ('*'*80, file=f)
+        print ("Winner: " + winner, file=f)
+        print ("", file=f)
+        print ('*'*80, file=f)
 
     
        
